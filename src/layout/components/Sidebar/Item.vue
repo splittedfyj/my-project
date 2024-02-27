@@ -5,7 +5,7 @@ export default {
   props: {
     icon: {
       type: String,
-      default: ''
+      default: '11'
     },
     title: {
       type: String,
@@ -20,7 +20,7 @@ export default {
       if (icon.includes('el-icon')) {
         vnodes.push(<i class={[icon, 'sub-el-icon']} />)
       } else {
-        vnodes.push(<svg-icon icon-class={icon}/>)
+        vnodes.push(<svg-icon icon-class={icon} />)
       }
     }
 
