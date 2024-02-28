@@ -1,3 +1,4 @@
+//结构
 <template>
   <div class="login-container">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on" label-position="left">
@@ -72,7 +73,7 @@
     </el-dialog>
   </div>
 </template>
-
+//行为
 <script>
 import { validUsername } from '@/utils/validate'
 import SocialSign from './components/SocialSignin'
@@ -199,7 +200,7 @@ export default {
   }
 }
 </script>
-
+//样式
 <style lang="scss">
 /* 修复input 背景不协调 和光标变色 */
 /* Detail see https://github.com/PanJiaChen/vue-element-admin/pull/927 */

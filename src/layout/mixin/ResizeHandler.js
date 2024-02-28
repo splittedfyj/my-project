@@ -2,7 +2,7 @@ import store from '@/store'
 
 const { body } = document
 const WIDTH = 992 // refer to Bootstrap's responsive design
-
+// js相同的地方可以封装成一个混入
 export default {
   watch: {
     $route(route) {

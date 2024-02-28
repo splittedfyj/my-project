@@ -1,13 +1,13 @@
-import router from './router'
-import store from './store'
-import { Message } from 'element-ui'
-import NProgress from 'nprogress' // progress bar
-import 'nprogress/nprogress.css' // progress bar style
-import { getToken } from '@/utils/auth' // get token from cookie
+import router from './router' // 引入路由
+import store from './store' // 引入仓库
+import { Message } from 'element-ui' // 引入了饿了么ui中的message
+import NProgress from 'nprogress' // progress bar  进度条
+import 'nprogress/nprogress.css' // progress bar style 进度条样式
+import { getToken } from '@/utils/auth' // get token from cookie 获取token
 import getPageTitle from '@/utils/get-page-title'
 
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
-
+// 进度条设置
 const whiteList = ['/login', '/auth-redirect'] // no redirect whitelist
 
 router.beforeEach(async(to, from, next) => {
@@ -20,7 +20,7 @@ router.beforeEach(async(to, from, next) => {
   // determine whether the user has logged in
   const hasToken = getToken()
 
-  if (hasToken) {
+  if (hasToken) { // 判断有没有token,有token代表已经登入了
     if (to.path === '/login') {
       // if is logged in, redirect to the home page
       next({ path: '/' })
@@ -45,7 +45,7 @@ router.beforeEach(async(to, from, next) => {
           // hack method to ensure that addRoutes is complete
           // set the replace: true, so the navigation will not leave a history record
           next({ ...to, replace: true })
-        } catch (error) {
+        } catch (error) { // token过期
           // remove token and go to login page to re-login
           await store.dispatch('user/resetToken')
           Message.error(error || 'Has Error')
